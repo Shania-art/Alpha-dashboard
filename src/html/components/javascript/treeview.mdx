@@ -1,39 +1,72 @@
-The Treeview plugin converts a nested list into a tree view where sub menus can be expanded.
-
-##### Usage
-
-This plugin can be used as the data api.
-
-**Data API**
-
-Add `data-lte-toggle="treeview"` to any ul or ol element to activate the plugin.
-
-```html
-<ul data-lte-toggle="treeview">
-  <li><a href="#">One Level</a></li>
-  <li class="nav-item menu-open">
-    <a class="nav-link" href="#">Multilevel</a>
-    <ul class="nav-treeview">
-      <li><a href="#">Level 2</a></li>
-    </ul>
-  </li>
-</ul>
-```
-
-##### Example
-
-<ul data-lte-toggle="treeview">
-  <li>
-    <a href="#">One Level</a>
-  </li>
-  <li class="nav-item menu-open">
-    <a class="nav-link" href="#">
-      Multilevel
+<!--begin::Sidebar Menu with Treeview-->
+<ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="navigation" aria-label="Main navigation">
+  <!-- Single-level items -->
+  <li class="nav-item">
+    <a href="/dashboard.html" class="nav-link">
+      <i class="nav-icon bi bi-speedometer"></i>
+      <p>Dashboard</p>
     </a>
-    <ul class="nav-treeview">
-      <li>
-        <a href="#">Level 2</a>
+  </li>
+  <li class="nav-item">
+    <a href="/modules/crm.html" class="nav-link">
+      <i class="nav-icon bi bi-people"></i>
+      <p>CRM</p>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="/modules/stock.html" class="nav-link">
+      <i class="nav-icon bi bi-box-seam"></i>
+      <p>Stock</p>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="/modules/loan.html" class="nav-link">
+      <i class="nav-icon bi bi-cash-stack"></i>
+      <p>Loan</p>
+    </a>
+  </li>
+
+  <!-- Treeview: Settings -->
+  <li class="nav-item menu-open">
+    <a href="#" class="nav-link">
+      <i class="nav-icon bi bi-gear"></i>
+      <p>
+        Settings
+        <i class="nav-arrow bi bi-chevron-right"></i>
+      </p>
+    </a>
+    <ul class="nav nav-treeview">
+      <li class="nav-item">
+        <a href="/settings/profile.html" class="nav-link">
+          <i class="nav-icon bi bi-circle"></i>
+          <p>Profile</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/settings/users/add.html" class="nav-link">
+          <i class="nav-icon bi bi-circle"></i>
+          <p>Add User</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/settings/users/list.html" class="nav-link">
+          <i class="nav-icon bi bi-circle"></i>
+          <p>List Users</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/settings/branches/add.html" class="nav-link">
+          <i class="nav-icon bi bi-circle"></i>
+          <p>Add Branch</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/settings/branches/list.html" class="nav-link">
+          <i class="nav-icon bi bi-circle"></i>
+          <p>List Branches</p>
+        </a>
       </li>
     </ul>
   </li>
 </ul>
+<!--end::Sidebar Menu with Treeview-->

@@ -1,13 +1,13 @@
 ---
 const { title, isRtl } = Astro.props
-const cssPath = isRtl ? ".rtl" : "";
+const cssPath = isRtl ? ".rtl" : ""
 
 // Smart path resolution: calculate relative path based on directory depth
-const pathname = Astro.url.pathname;
+const pathname = Astro.url.pathname
 // Only count directories, not the filename itself
-const pathSegments = pathname.split('/').filter(segment => segment !== '');
-const depth = pathSegments.length > 0 ? pathSegments.length - 1 : 0;
-const deploymentPath = depth === 0 ? './' : '../'.repeat(depth);
+const pathSegments = pathname.split('/').filter(segment => segment !== '')
+const depth = pathSegments.length > 0 ? pathSegments.length - 1 : 0
+const deploymentPath = depth === 0 ? './' : '../'.repeat(depth)
 ---
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,14 +22,10 @@ const deploymentPath = depth === 0 ? './' : '../'.repeat(depth);
 
 <!--begin::Primary Meta Tags-->
 <meta name="title" content={title} />
-<meta name="author" content="ColorlibHQ" />
+<meta name="author" content="ARSOC" />
 <meta
   name="description"
-  content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS. Fully accessible with WCAG 2.1 AA compliance."
-/>
-<meta
-  name="keywords"
-  content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard, accessible admin panel, WCAG compliant"
+  content="ARSOC Dashboard built with Bootstrap 5, fully accessible with WCAG 2.1 AA compliance."
 />
 <!--end::Primary Meta Tags-->
 
@@ -66,6 +62,6 @@ const deploymentPath = depth === 0 ? './' : '../'.repeat(depth);
 />
 <!--end::Third Party Plugin(Bootstrap Icons)-->
 
-<!--begin::Required Plugin(AdminLTE)-->
+<!--begin::Required Styles-->
 <link rel="stylesheet" href={deploymentPath + "css/adminlte" + cssPath + ".css"} />
-<!--end::Required Plugin(AdminLTE)-->
+<!--end::Required Styles-->

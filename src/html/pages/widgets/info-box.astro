@@ -1,413 +1,274 @@
----
-import Head from "@components/_head.astro"
-import Footer from "@components/dashboard/_footer.astro"
-import Topbar from "@components/dashboard/_topbar.astro"
-import Sidenav from "@components/dashboard/_sidenav.astro"
-import Scripts from "@components/_scripts.astro"
-
-const title = "AdminLTE 4 | Widgets - Info Box"
-const path = "../../../dist"
-const mainPage = "widgets"
-const page = "info-box";
----
-
-<!DOCTYPE html>
-<html lang="en">
-  <!--begin::Head-->
-  <head>
-    <Head title={title} path={path} />
-  </head>
-  <!--end::Head-->
-  <!--begin::Body-->
-  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
-    <!--begin::App Wrapper-->
-    <div class="app-wrapper">
-      <Topbar path={path} />
-      <Sidenav path={path} mainPage={mainPage} page={page} />
-      <!--begin::App Main-->
-      <main class="app-main">
-        <!--begin::App Content Header-->
-        <div class="app-content-header">
-          <!--begin::Container-->
-          <div class="container-fluid">
-            <!--begin::Row-->
-            <div class="row">
-              <div class="col-sm-6">
-                <h3 class="mb-0">Info Box</h3>
-              </div>
-              <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-end">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">
-                    Info Box
-                  </li>
-                </ol>
-              </div>
-            </div>
-            <!--end::Row-->
-          </div>
-          <!--end::Container-->
-        </div>
-        <!--end::App Content Header-->
-        <!--begin::App Content-->
-        <div class="app-content">
-          <!--begin::Container-->
-          <div class="container-fluid">
-            <h5 class="mb-2">Info Box</h5>
-            <!--begin::Row-->
-            <div class="row">
-              <div class="col-12 col-sm-6 col-md-3">
-                <div class="info-box">
-                  <span class="info-box-icon text-bg-primary shadow-sm">
-                    <i class="bi bi-gear-fill"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">CPU Traffic</span>
-                    <span class="info-box-number">
-                      10
-                      <small>%</small>
-                    </span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-
-              <div class="col-12 col-sm-6 col-md-3">
-                <div class="info-box">
-                  <span class="info-box-icon text-bg-success shadow-sm">
-                    <i class="bi bi-cart-fill"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">Sales</span>
-                    <span class="info-box-number">760</span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-
-              <!-- fix for small devices only -->
-              <!-- <div class="clearfix hidden-md-up"></div> -->
-
-              <div class="col-12 col-sm-6 col-md-3">
-                <div class="info-box">
-                  <span class="info-box-icon text-bg-warning shadow-sm">
-                    <i class="bi bi-people-fill"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">New Members</span>
-                    <span class="info-box-number">2,000</span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-
-              <div class="col-12 col-sm-6 col-md-3">
-                <div class="info-box">
-                  <span class="info-box-icon text-bg-danger shadow-sm">
-                    <i class="bi bi-hand-thumbs-up-fill"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">Likes</span>
-                    <span class="info-box-number">41,410</span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-            </div>
-            <!--end::Row-->
-
-            <!-- =========================================================== -->
-            <h5 class="mb-2">
-              Info Box With Custom Shadows <small>
-                <i>Using Bootstrap's Shadow Utility</i>
-              </small>
-            </h5>
-            <!--begin::Row-->
-            <div class="row">
-              <div class="col-12 col-sm-6 col-md-3">
-                <div class="info-box shadow-none">
-                  <span class="info-box-icon text-bg-primary shadow-sm">
-                    <i class="bi bi-gear-fill"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">CPU Traffic</span>
-                    <span class="info-box-number">
-                      10
-                      <small>%</small>
-                    </span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-
-              <div class="col-12 col-sm-6 col-md-3">
-                <div class="info-box shadow-sm">
-                  <span class="info-box-icon text-bg-success shadow-sm">
-                    <i class="bi bi-cart-fill"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">Sales</span>
-                    <span class="info-box-number">760</span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-
-              <!-- fix for small devices only -->
-              <!-- <div class="clearfix hidden-md-up"></div> -->
-
-              <div class="col-12 col-sm-6 col-md-3">
-                <div class="info-box shadow">
-                  <span class="info-box-icon text-bg-warning shadow-sm">
-                    <i class="bi bi-people-fill"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">New Members</span>
-                    <span class="info-box-number">2,000</span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-
-              <div class="col-12 col-sm-6 col-md-3">
-                <div class="info-box shadow-lg">
-                  <span class="info-box-icon text-bg-danger shadow-sm">
-                    <i class="bi bi-hand-thumbs-up-fill"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">Likes</span>
-                    <span class="info-box-number">41,410</span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-            </div>
-            <!--end::Row-->
-
-            <!-- =========================================================== -->
-            <h5 class="mt-4 mb-2">Info Box With <code>bg-*</code></h5>
-            <!--begin::Row-->
-            <div class="row">
-              <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box text-bg-primary">
-                  <span class="info-box-icon">
-                    <i class="bi bi-bookmark-fill"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">Bookmarks</span>
-                    <span class="info-box-number">41,410</span>
-
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                    <span class="progress-description">
-                      70% Increase in 30 Days
-                    </span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-              <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box text-bg-success">
-                  <span class="info-box-icon">
-                    <i class="bi bi-hand-thumbs-up"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">Likes</span>
-                    <span class="info-box-number">41,410</span>
-
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                    <span class="progress-description">
-                      70% Increase in 30 Days
-                    </span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-              <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box text-bg-warning">
-                  <span class="info-box-icon">
-                    <i class="bi bi-calendar3"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">Events</span>
-                    <span class="info-box-number">41,410</span>
-
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                    <span class="progress-description">
-                      70% Increase in 30 Days
-                    </span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-              <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box text-bg-danger">
-                  <span class="info-box-icon">
-                    <i class="bi bi-chat-text-fill"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">Comments</span>
-                    <span class="info-box-number">41,410</span>
-
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                    <span class="progress-description">
-                      70% Increase in 30 Days
-                    </span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-            </div>
-            <!--end::Row-->
-
-            <!-- =========================================================== -->
-            <h5 class="mt-4 mb-2">Info Box With <code>bg-gradient</code></h5>
-            <!--begin::Row-->
-            <div class="row">
-              <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box text-bg-primary bg-gradient">
-                  <span class="info-box-icon">
-                    <i class="bi bi-bookmark-fill"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">Bookmarks</span>
-                    <span class="info-box-number">41,410</span>
-
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                    <span class="progress-description">
-                      70% Increase in 30 Days
-                    </span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-              <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box text-bg-success bg-gradient">
-                  <span class="info-box-icon">
-                    <i class="bi bi-hand-thumbs-up"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">Likes</span>
-                    <span class="info-box-number">41,410</span>
-
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                    <span class="progress-description">
-                      70% Increase in 30 Days
-                    </span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-              <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box text-bg-warning bg-gradient">
-                  <span class="info-box-icon">
-                    <i class="bi bi-calendar3"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">Events</span>
-                    <span class="info-box-number">41,410</span>
-
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                    <span class="progress-description">
-                      70% Increase in 30 Days
-                    </span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-              <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box text-bg-danger bg-gradient">
-                  <span class="info-box-icon">
-                    <i class="bi bi-chat-text-fill"></i>
-                  </span>
-
-                  <div class="info-box-content">
-                    <span class="info-box-text">Comments</span>
-                    <span class="info-box-number">41,410</span>
-
-                    <div class="progress">
-                      <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                    <span class="progress-description">
-                      70% Increase in 30 Days
-                    </span>
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-              </div>
-              <!-- /.col -->
-            </div>
-            <!--end::Row-->
-          </div>
-          <!--end::Container-->
-        </div>
-        <!--end::App Content-->
-      </main>
-      <!--end::App Main-->
-      <Footer />
+<h5 class="mb-2">ALPHA Module Info Boxes</h5>
+<!--begin::Row-->
+<div class="row">
+  <!-- CRM -->
+  <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box">
+      <span class="info-box-icon text-bg-info shadow-sm">
+        <i class="bi bi-people-fill"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Active Clients</span>
+        <span class="info-box-number">1,250</span>
+      </div>
     </div>
-    <!--end::App Wrapper-->
-    <!--begin::Script-->
-    <Scripts path={path} />
-    <!--end::Script-->
-  </body><!--end::Body-->
+  </div>
+
+  <!-- Loan -->
+  <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box">
+      <span class="info-box-icon text-bg-warning shadow-sm">
+        <i class="bi bi-cash-stack"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Pending Loans</span>
+        <span class="info-box-number">320</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stock -->
+  <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box">
+      <span class="info-box-icon text-bg-success shadow-sm">
+        <i class="bi bi-box-seam"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Inventory Items</span>
+        <span class="info-box-number">5,430</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Branches -->
+  <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box">
+      <span class="info-box-icon text-bg-danger shadow-sm">
+        <i class="bi bi-building"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Active Branches</span>
+        <span class="info-box-number">18</span>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end::Row-->
+<h5 class="mb-2">
+  Info Boxes With Custom Shadows 
+  <small><i>Using Bootstrap's Shadow Utility</i></small>
+</h5>
+<!--begin::Row-->
+<div class="row">
+  <!-- CRM -->
+  <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box shadow-none">
+      <span class="info-box-icon text-bg-info shadow-sm">
+        <i class="bi bi-people-fill"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Active Clients</span>
+        <span class="info-box-number">1,250</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loan -->
+  <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box shadow-sm">
+      <span class="info-box-icon text-bg-warning shadow-sm">
+        <i class="bi bi-cash-stack"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Pending Loans</span>
+        <span class="info-box-number">320</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stock -->
+  <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box shadow">
+      <span class="info-box-icon text-bg-success shadow-sm">
+        <i class="bi bi-box-seam"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Inventory Items</span>
+        <span class="info-box-number">5,430</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Branches -->
+  <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box shadow-lg">
+      <span class="info-box-icon text-bg-danger shadow-sm">
+        <i class="bi bi-building"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Active Branches</span>
+        <span class="info-box-number">18</span>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end::Row-->
+<h5 class="mt-4 mb-2">Info Boxes With <code>bg-*</code></h5>
+<!--begin::Row-->
+<div class="row">
+  <!-- CRM Growth -->
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="info-box text-bg-info">
+      <span class="info-box-icon">
+        <i class="bi bi-graph-up"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Client Growth</span>
+        <span class="info-box-number">+15%</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 15%"></div>
+        </div>
+        <span class="progress-description">Increase in 30 Days</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loan Approvals -->
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="info-box text-bg-warning">
+      <span class="info-box-icon">
+        <i class="bi bi-check2-circle"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Loan Approvals</span>
+        <span class="info-box-number">72%</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 72%"></div>
+        </div>
+        <span class="progress-description">Approval Rate</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stock Restock -->
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="info-box text-bg-success">
+      <span class="info-box-icon">
+        <i class="bi bi-arrow-repeat"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Restock Progress</span>
+        <span class="info-box-number">45%</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 45%"></div>
+        </div>
+        <span class="progress-description">Ongoing Restock</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Branch Expansion -->
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="info-box text-bg-danger">
+      <span class="info-box-icon">
+        <i class="bi bi-geo-alt-fill"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Branch Expansion</span>
+        <span class="info-box-number">3 New</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 30%"></div>
+        </div>
+        <span class="progress-description">Planned This Quarter</span>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end::Row-->
+<h5 class="mt-4 mb-2">Info Boxes With <code>bg-gradient</code></h5>
+<!--begin::Row-->
+<div class="row">
+  <!-- CRM Growth -->
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="info-box text-bg-info bg-gradient">
+      <span class="info-box-icon">
+        <i class="bi bi-graph-up"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Client Growth</span>
+        <span class="info-box-number">+15%</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 15%"></div>
+        </div>
+        <span class="progress-description">Increase in 30 Days</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loan Approvals -->
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="info-box text-bg-warning bg-gradient">
+      <span class="info-box-icon">
+        <i class="bi bi-check2-circle"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Loan Approvals</span>
+        <span class="info-box-number">72%</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 72%"></div>
+        </div>
+        <span class="progress-description">Approval Rate</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stock Restock -->
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="info-box text-bg-success bg-gradient">
+      <span class="info-box-icon">
+        <i class="bi bi-arrow-repeat"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Restock Progress</span>
+        <span class="info-box-number">45%</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 45%"></div>
+        </div>
+        <span class="progress-description">Ongoing Restock</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Branch Expansion -->
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="info-box text-bg-danger bg-gradient">
+      <span class="info-box-icon">
+        <i class="bi bi-geo-alt-fill"></i>
+      </span>
+      <div class="info-box-content">
+        <span class="info-box-text">Branch Expansion</span>
+        <span class="info-box-number">3 New</span>
+        <div class="progress">
+          <div class="progress-bar" style="width: 30%"></div>
+        </div>
+        <span class="progress-description">Planned This Quarter</span>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end::Row-->
+
+<!-- =========================================================== -->
+</div>
+<!--end::Container-->
+</div>
+<!--end::App Content-->
+</main>
+<!--end::App Main-->
+<Footer />
+</div>
+<!--end::App Wrapper-->
+<Scripts path={path} />
+</body>
+<!--end::Body-->
 </html>

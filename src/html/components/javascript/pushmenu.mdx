@@ -1,17 +1,74 @@
-The Pushmenu plugin is used to toggle the visibility of a sidebar menu. It allows users to collapse or expand the sidebar by clicking on a button or a link.
+---
+import { convertPathToHtml } from "../../../utils/index.js"
+const { path } = Astro.props
+const htmlPath = convertPathToHtml(path)
 
-##### Usage
+// Smart path resolution: calculate relative path based on directory depth
+const pathname = Astro.url.pathname;
+const pathSegments = pathname.split('/').filter(segment => segment !== '');
+const depth = pathSegments.length > 0 ? pathSegments.length - 1 : 0;
+const deploymentPath = depth === 0 ? './' : '../'.repeat(depth);
+---
 
-This plugin can be used as the data api.
+<!--begin::Header-->
+<nav class="app-header navbar navbar-expand navbar-dark bg-dark">
+  <!--begin::Container-->
+  <div class="container-fluid">
+    <!--begin::Start Navbar Links-->
+    <ul class="navbar-nav">
+      <!-- Sidebar toggle using Pushmenu plugin -->
+      <li class="nav-item">
+        <a class="nav-link" href="#" role="button" data-lte-toggle="sidebar">
+          <i class="bi bi-list"></i>
+        </a>
+      </li>
+    </ul>
+    <!--end::Start Navbar Links-->
 
-**Data API**
+    <!--begin::End Navbar Links-->
+    <ul class="navbar-nav ms-auto">
+      <!--begin::Fullscreen Toggle-->
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-lte-toggle="fullscreen">
+          <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i>
+          <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none;"></i>
+        </a>
+      </li>
+      <!--end::Fullscreen Toggle-->
 
-Add `data-lte-toggle="sidebar"` to any button or link element to activate the plugin.
+      <!--begin::Branch Switcher-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
+          <i class="bi bi-diagram-3"></i>
+          <span id="current-branch-label">Branch B</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a href="#" class="dropdown-item">Switch Branch</a></li>
+          <!-- populate with branch list via JS -->
+        </ul>
+      </li>
+      <!--end::Branch Switcher-->
 
-```html
-<a href="#" data-lte-toggle="sidebar">Toggle Sidebar</a>
-```
-
-##### Example
-
-<a href="#" data-lte-toggle="sidebar">Toggle Sidebar</a>
+      <!--begin::User Menu Dropdown-->
+      <li class="nav-item dropdown user-menu">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+          <i class="bi bi-person-circle"></i>
+          <span class="d-none d-md-inline">Revaldo</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li>
+            <a href={htmlPath + "/settings/profile.html"} class="dropdown-item">Settings</a>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a href="#" id="logout-btn" class="dropdown-item text-danger">Logout</a>
+          </li>
+        </ul>
+      </li>
+      <!--end::User Menu Dropdown-->
+    </ul>
+    <!--end::End Navbar Links-->
+  </div>
+  <!--end::Container-->
+</nav>
+<!--end::Header-->
