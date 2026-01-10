@@ -1,0 +1,73 @@
+---
+import Head from "@components/_head.astro"
+import Topbar from "@components/dashboard/_topbar.astro"
+import Sidenav from "@components/dashboard/_sidenav.astro"
+import Footer from "@components/dashboard/_footer.astro"
+import Scripts from "@components/_scripts.astro"
+
+const title = "ALPHA | Profile"
+const path = "../../dist"
+const mainPage = "settings"
+const page = "profile"
+---
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <Head title={title} path={path} />
+  </head>
+  <body class="layout-fixed sidebar-expand-lg bg-dark text-light">
+    <div class="app-wrapper">
+      <Topbar path={path} />
+      <Sidenav path={path} mainPage={mainPage} page={page} />
+
+      <main class="app-main">
+        <div class="app-content">
+          <div class="container-fluid py-3">
+            <div class="card card-primary card-outline bg-dark border-secondary">
+              <div class="card-header">
+                <h3 class="card-title text-light">Profile Information</h3>
+              </div>
+
+              <div class="card-body">
+                <p class="text-muted mb-4">Update your name and password</p>
+                <form>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="name" class="form-label text-light">Name</label>
+                        <input type="text" class="form-control bg-dark text-light border-secondary" id="name" value="Shania" />
+                      </div>
+                    </div>
+                    <div class="col-md-6"></div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="newPassword" class="form-label text-light">New Password</label>
+                        <input type="password" class="form-control bg-dark text-light border-secondary" id="newPassword" placeholder="Enter new password" />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label for="confirmPassword" class="form-label text-light">Confirm Password</label>
+                        <input type="password" class="form-control bg-dark text-light border-secondary" id="confirmPassword" placeholder="Confirm new password" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-dark border-light">Save</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+
+    <Scripts path={path} />
+  </body>
+</html>

@@ -44,55 +44,54 @@ const page = "users"
                 <div class="tab-content mt-3">
                   <!-- Add User Tab -->
                   <div class="tab-pane fade show active" id="add-user" role="tabpanel">
-                    <!-- Add user form goes here -->
-                    <form>
-                    <div class="row">
+                    <form id="addUserForm">
+                      <div class="row">
                         <!-- Left Column -->
                         <div class="col-md-6">
-                        <div class="mb-3">
+                          <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" placeholder="Enter username" />
-                        </div>
-                        <div class="mb-3">
+                          </div>
+                          <div class="mb-3">
                             <label for="lastName" class="form-label">Last Name</label>
                             <input type="text" class="form-control" id="lastName" placeholder="Enter last name" />
-                        </div>
-                        <div class="mb-3">
+                          </div>
+                          <div class="mb-3">
                             <label for="cell" class="form-label">Cell Number</label>
                             <input type="text" class="form-control" id="cell" placeholder="Enter cell number" />
-                        </div>
-                        <div class="mb-3">
+                          </div>
+                          <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="password" placeholder="Enter password" />
-                        </div>
-                        <button type="submit" class="btn btn-primary">Add User</button>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Add User</button>
                         </div>
 
                         <!-- Right Column -->
                         <div class="col-md-6">
-                        <div class="mb-3">
+                          <div class="mb-3">
                             <label for="firstName" class="form-label">First Name</label>
                             <input type="text" class="form-control" id="firstName" placeholder="Enter first name" />
-                        </div>
-                        <div class="mb-3">
+                          </div>
+                          <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" placeholder="Enter email address" />
-                        </div>
-                        <div class="mb-3">
+                          </div>
+                          <div class="mb-3">
                             <label for="role" class="form-label">Role</label>
                             <select class="form-select" id="role">
-                            <option value="">Search or select role</option>
-                            <option value="admin">Admin</option>
-                            <option value="intern">Intern</option>
-                            <option value="manager">Manager</option>
+                              <option value="">Search or select role</option>
+                              <option value="admin">Admin</option>
+                              <option value="intern">Intern</option>
+                              <option value="manager">Manager</option>
                             </select>
-                        </div>
-                        <div class="mb-3">
+                          </div>
+                          <div class="mb-3">
                             <label for="confirmPassword" class="form-label">Confirm Password</label>
                             <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" />
+                          </div>
                         </div>
-                        </div>
-                    </div>
+                      </div>
                     </form>
                   </div>
 
@@ -101,19 +100,19 @@ const page = "users"
                     <table id="userTable" class="table table-bordered table-striped">
                       <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Cell</th>
-                            <th>Role</th>
-                            <th>Status</th>
+                          <th>Name</th>
+                          <th>Username</th>
+                          <th>Email</th>
+                          <th>Cell</th>
+                          <th>Role</th>
+                          <th>Status</th>
                         </tr>
-                        </thead>
-                        <tbody>
+                      </thead>
+                      <tbody id="userTableBody">
                         <tr>
-                            <td colspan="6" class="text-center">No users found</td>
+                          <td colspan="6" class="text-center">Loading...</td>
                         </tr>
-                        </tbody>
+                      </tbody>
                     </table>
                   </div>
                 </div>
@@ -132,6 +131,83 @@ const page = "users"
     <script is:inline>
       document.addEventListener("DOMContentLoaded", function () {
         const table = new DataTable("#userTable");
+        const API_BASE = "http://arsocadmin-001-site1.ltempurl.com/api/";
+
+        // Load users
+        async function loadUsers() {
+          const token = localStorage.getItem("authToken"); // paste token in browser console: localStorage.setItem("authToken","YOUR_TOKEN")
+          const tbody = document.getElementById("userTableBody");
+          try {
+            const response = await fetch(API_BASE + "list/user", {
+              headers: { "Authorization": `Bearer ${token}` }
+            });
+            const result = await response.json();
+            const users = result?.User_Response?.data;
+
+            tbody.innerHTML = "";
+
+            if (!users || users.length === 0) {
+              tbody.innerHTML = `<tr><td colspan="6" class="text-center">No users found</td></tr>`;
+            } else {
+              users.forEach(u => {
+                tbody.innerHTML += `
+                  <tr>
+                    <td>${u.name || ""}</td>
+                    <td>${u.username || ""}</td>
+                    <td>${u.email || ""}</td>
+                    <td>${u.cell || ""}</td>
+                    <td>${u.role || ""}</td>
+                    <td>${u.status || ""}</td>
+                  </tr>
+                `;
+              });
+            }
+          } catch (err) {
+            console.error("Failed to load users:", err);
+            tbody.innerHTML = `<tr><td colspan="6" class="text-center text-danger">Error loading users</td></tr>`;
+          }
+        }
+
+        loadUsers();
+
+        // Handle Add User form
+        const form = document.getElementById("addUserForm");
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const token = localStorage.getItem("authToken");
+
+          const payload = {
+            username: document.getElementById("username").value,
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            email: document.getElementById("email").value,
+            cell: document.getElementById("cell").value,
+            role: document.getElementById("role").value,
+            password: document.getElementById("password").value
+          };
+
+          try {
+            const response = await fetch(API_BASE + "add/user", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+              },
+              body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+              alert("User added successfully!");
+              form.reset();
+              loadUsers(); // refresh table
+            } else {
+              alert("Error adding user");
+            }
+          } catch (err) {
+            console.error(err);
+            alert("Network error");
+          }
+        });
       });
     </script>
   </body>

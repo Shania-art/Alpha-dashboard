@@ -6,7 +6,7 @@ import Footer from "@components/dashboard/_footer.astro"
 import Scripts from "@components/_scripts.astro"
 
 const title = "ALPHA | Branches"
-const path = "../../dist" // corrected depth for proper htmlPath resolution
+const path = "../../dist"
 const mainPage = "dashboard"
 const page = "branches"
 ---
@@ -45,7 +45,7 @@ const page = "branches"
                 <div class="tab-content mt-3">
                   <!-- Add Branch Tab -->
                   <div class="tab-pane fade show active" id="add-branch" role="tabpanel">
-                    <form>
+                    <form id="addBranchForm">
                       <div class="mb-3">
                         <label for="branchName" class="form-label text-light">Branch Name</label>
                         <input type="text" class="form-control bg-dark text-light border-secondary" id="branchName" placeholder="Enter branch name" />
@@ -78,9 +78,9 @@ const page = "branches"
                           <th>Status</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="branchTableBody">
                         <tr>
-                          <td colspan="5" class="text-center">No branches found</td>
+                          <td colspan="5" class="text-center">Loading...</td>
                         </tr>
                       </tbody>
                     </table>
@@ -101,6 +101,79 @@ const page = "branches"
     <script is:inline>
       document.addEventListener("DOMContentLoaded", function () {
         const table = new DataTable("#branchTable");
+        const API_BASE = "http://arsocadmin-001-site1.ltempurl.com/api/";
+
+        // Load branches
+        async function loadBranches() {
+          const token = localStorage.getItem("authToken"); // set via browser console
+          const tbody = document.getElementById("branchTableBody");
+          try {
+            const response = await fetch(API_BASE + "list/branch", {
+              headers: { "Authorization": `Bearer ${token}` }
+            });
+            const result = await response.json();
+            const branches = result?.Branch_Response?.data;
+
+            tbody.innerHTML = "";
+
+            if (!branches || branches.length === 0) {
+              tbody.innerHTML = `<tr><td colspan="5" class="text-center">No branches found</td></tr>`;
+            } else {
+              branches.forEach(b => {
+                tbody.innerHTML += `
+                  <tr>
+                    <td>${b.branchName || ""}</td>
+                    <td>${b.location || ""}</td>
+                    <td>${b.manager || ""}</td>
+                    <td>${b.contact || ""}</td>
+                    <td>${b.status || ""}</td>
+                  </tr>
+                `;
+              });
+            }
+          } catch (err) {
+            console.error("Failed to load branches:", err);
+            tbody.innerHTML = `<tr><td colspan="5" class="text-center text-danger">Error loading branches</td></tr>`;
+          }
+        }
+
+        loadBranches();
+
+        // Handle Add Branch form
+        const form = document.getElementById("addBranchForm");
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const token = localStorage.getItem("authToken");
+
+          const payload = {
+            branchName: document.getElementById("branchName").value,
+            branchCode: document.getElementById("branchCode").value,
+            location: document.getElementById("location").value,
+            branchType: document.getElementById("branchType").value
+          };
+
+          try {
+            const response = await fetch(API_BASE + "add/branch", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+              },
+              body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+              alert("Branch added successfully!");
+              form.reset();
+              loadBranches(); // refresh table
+            } else {
+              alert("Error adding branch");
+            }
+          } catch (err) {
+            console.error(err);
+            alert("Network error");
+          }
+        });
       });
     </script>
   </body>
