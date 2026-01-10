@@ -1,0 +1,138 @@
+---
+import Head from "@components/_head.astro"
+import Topbar from "@components/dashboard/_topbar.astro"
+import Sidenav from "@components/dashboard/_sidenav.astro"
+import Footer from "@components/dashboard/_footer.astro"
+import Scripts from "@components/_scripts.astro"
+
+const title = "ALPHA | Users"
+const path = "../../dist"
+const mainPage = "dashboard"
+const page = "users"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <Head title={title} path={path} />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs5/css/dataTables.bootstrap5.min.css" />
+  </head>
+  <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <div class="app-wrapper">
+      <Topbar path={path} />
+      <Sidenav path={path} mainPage={mainPage} page={page} />
+
+      <main class="app-main">
+        <div class="app-content">
+          <div class="container-fluid">
+            <div class="card card-primary card-outline">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title">System Users</h3>
+                <span></span>
+              </div>
+
+              <div class="card-body">
+                <ul class="nav nav-tabs" id="userTabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="add-tab" data-bs-toggle="tab" data-bs-target="#add-user" type="button" role="tab">Add User</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="list-tab" data-bs-toggle="tab" data-bs-target="#list-users" type="button" role="tab">List Users</button>
+                  </li>
+                </ul>
+
+                <div class="tab-content mt-3">
+                  <!-- Add User Tab -->
+                  <div class="tab-pane fade show active" id="add-user" role="tabpanel">
+                    <!-- Add user form goes here -->
+                    <form>
+                    <div class="row">
+                        <!-- Left Column -->
+                        <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter username" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Enter last name" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="cell" class="form-label">Cell Number</label>
+                            <input type="text" class="form-control" id="cell" placeholder="Enter cell number" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter password" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add User</button>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="Enter first name" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email address" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Role</label>
+                            <select class="form-select" id="role">
+                            <option value="">Search or select role</option>
+                            <option value="admin">Admin</option>
+                            <option value="intern">Intern</option>
+                            <option value="manager">Manager</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" />
+                        </div>
+                        </div>
+                    </div>
+                    </form>
+                  </div>
+
+                  <!-- List Users Tab -->
+                  <div class="tab-pane fade" id="list-users" role="tabpanel">
+                    <table id="userTable" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Cell</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td colspan="6" class="text-center">No users found</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+
+    <Scripts path={path} />
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", function () {
+        const table = new DataTable("#userTable");
+      });
+    </script>
+  </body>
+</html>

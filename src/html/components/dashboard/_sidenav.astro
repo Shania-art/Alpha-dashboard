@@ -63,13 +63,13 @@ const deploymentPath = depth === 0 ? './' : '../'.repeat(depth);
               </a>
             </li>
             <li class="nav-item">
-              <a href={htmlPath + "/settings/users/index.html"} class:list={["nav-link", page === "users" && "active"]}>
+              <a href="/dashboard/users.html" class:list={["nav-link", page === "users" && "active"]}>
                 <i class="nav-icon bi bi-circle"></i>
                 <p>Users</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href={htmlPath + "/settings/branches/index.html"} class:list={["nav-link", page === "branches" && "active"]}>
+              <a href="/dashboard/branch.html" class:list={["nav-link", page === "branches" && "active"]}>
                 <i class="nav-icon bi bi-circle"></i>
                 <p>Branches</p>
               </a>
